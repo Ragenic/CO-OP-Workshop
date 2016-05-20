@@ -1,0 +1,128 @@
+* {
+    z-index: 1;
+}
+
+body {
+    background-color: black;
+}
+
+#top_menu {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1C1C1C;
+}
+
+.inshadow {
+    position: absolute;
+    left: -3px;
+    top: -3px;
+}
+
+.outshadow:hover .inshadow {
+    left: -6px;
+    top: -5px;
+}
+
+.outshadow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.outshadow:hover {
+    left: 2px;
+    top: 2px;
+}
+
+#top_menu .text_container {
+    -webkit-transform: skew(-20deg);
+    -moz-transform: skew(-20deg);
+    -o-transform: skew(-20deg);
+    margin-top: 11px;
+    margin-left: 17px;
+    margin-right: 12px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: pre;
+}
+
+#top_menu .button_wrapper {
+    position: absolute;
+    top: 40px;
+}
+
+#top_menu .button_container {
+    height: 40px;
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+    background: radial-gradient(rgb(140,140,140),rgb(245,240,240));
+}
+
+#top_menu .button {
+    background: #EEE9E9;
+    background: linear-gradient(to top right, rgba(139,137,137,0.8), rgba(255,250,250,0.8) 70%);
+    height: 40px;
+    opacity: 0.99;
+    cursor: pointer;
+}
+
+#top_menu .button_container:hover .button {
+    background: linear-gradient(to top left, rgba(255,250,250,0.9) 70%, rgba(139,137,137,0.9));
+}
+
+#top_menu .add {
+    width: 41px;
+    font-size: 36px;
+}
+
+#top_menu .add .text_container {
+    margin-top: 1px;
+    margin-left: 13px;
+}
+
+#top_menu #current_page {
+    background: radial-gradient(rgb(0, 255, 0), rgb(0, 205, 0));
+}
+
+#top_menu .horizontal_line {
+    position: absolute;
+    height: 1px;
+    background-color: white;
+}
+
+#top_line {
+    top: 26px;
+    left: 24px;
+}
+
+#top_menu .horizontal_line .horizontal_line{
+    top: 2px;
+    left: 2px;
+    background-color: gray;
+}
+
+#bottom_line {
+    top: 91px;
+    left: 50px;
+}
+
+#top_menu .button_wrapper .vertical{
+    height: 18px;
+    width: 40px;
+}
+
+#top_menu #tmbdown {
+    top: 64px !important;
+}
+
+.hide {
+    display: none;
+}
+
+.line {
+    number: 1;
+}
+
