@@ -107,9 +107,9 @@ function create_new_tab() {
 
 
 
-function pressed() {
+function pressed(e) {
   
-    if (event.which == 1) {
+    if (e.which == 1) {
         var buttons = document.getElementById('top_menu').getElementsByClassName('button_container');
         for (var i = 0; i < buttons.length - 2; i++) {
                 buttons[i].removeAttribute('id');
