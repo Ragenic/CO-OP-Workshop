@@ -126,3 +126,19 @@ body {
     number: 1;
 }
 
+.vertical_button_container {
+    width: 30px;
+    height: 14px;
+}
+
+#tmbup .vertical_button_container {
+    margin-top: 3px;
+    margin-left: 8px;
+    background: url(img/up_off.png) no-repeat;
+}
+
+#tmbdown .vertical_button_container {
+    margin-top: 4px;
+    margin-left: 7px;
+    background: url(img/down_off.png) no-repeat;
+}

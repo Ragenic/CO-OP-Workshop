@@ -57,7 +57,7 @@
                 <div class="button_wrapper" id="tmbup">
                     <div class="outshadow button_container vertical">
                         <div class="inshadow button vertical">
-                            <div class="text_container">*</div>
+                            <div class="vertical_button_container"></div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="button_wrapper" id="tmbdown">
                     <div class="outshadow button_container vertical">
                         <div class="inshadow button vertical">
-                            <div class="text_container">*</div>
+                            <div class="vertical_button_container"></div>
                         </div>
                     </div>
                 </div>
