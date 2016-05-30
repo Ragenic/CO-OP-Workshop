@@ -1,5 +1,13 @@
 
 var current_line = 1;
+var current_tab = 1;
+
+
+
+function set_current_tab_on_default() {
+    
+    document.getElementById('top_menu').getElementsByClassName('button_container')[0].id = 'current_page';
+}
 
 
 
@@ -68,6 +76,26 @@ function display_toggle(state) {
 
 function show_current_line() {
     
+    var current_line_check = document.getElementById('top_menu').getElementsByClassName('line_' + current_line);
+    
+    if (current_line_check.length == 0) {
+        
+        var condition = true;
+        var counter = 1;
+        
+        do {
+            if (tmbadd.classList.contains('line_' + counter)) {
+                
+                current_line = counter;
+                condition = false;
+                
+            } else {
+              
+                counter = counter + 1;
+            }
+        } while (condition == true);
+    }
+    
     display_toggle('none');
     
     var current_line_tabs = document.getElementById('top_menu').getElementsByClassName('line_' + current_line);
@@ -81,16 +109,41 @@ function show_current_line() {
 
 
 function size_top_menu() {
-      
+    
+    var correlation = 0;
+    
+    
+    function set_correlation() {
+        
+        var max_element_width = 0;
+        
+        var buttons = document.getElementById('top_menu').getElementsByClassName('button');
+        
+        for (var i = 0; i < buttons.length - 2; i++) {
+          
+            if (buttons[i].offsetWidth > max_element_width) {
+                max_element_width = buttons[i].offsetWidth;
+            }
+        }
+        
+        var min_screen_width = max_element_width + 370;
+        
+        if (min_screen_width > document.documentElement.clientWidth) {
+            
+            correlation = min_screen_width - document.documentElement.clientWidth;
+        }
+    }
+    
+    
     function size_static() {
         
         var top_menu_lines = document.getElementById('top_menu').getElementsByClassName('horizontal_line');
         for (var i = 0; i < top_menu_lines.length; i++) {
-            top_menu_lines[i].style.width = document.documentElement.clientWidth - 243 - i + 'px';
+            top_menu_lines[i].style.width = document.documentElement.clientWidth - 243 + correlation - i + 'px';
         }
         
-        tmbup.style.left = document.documentElement.clientWidth - 251 + 'px';
-        tmbdown.style.left = document.documentElement.clientWidth - 242 + 'px';
+        tmbup.style.left = document.documentElement.clientWidth - 251 + correlation + 'px';
+        tmbdown.style.left = document.documentElement.clientWidth - 242 + correlation + 'px';
     }
     
     
@@ -123,13 +176,13 @@ function size_top_menu() {
             
             var current_width = button_wrappers[i].getElementsByClassName('button_container')[0].offsetWidth;
           
-            if (left_margin + current_width >= document.documentElement.clientWidth - 260) {
+            if (left_margin + current_width >= document.documentElement.clientWidth - 260 + correlation) {
               
                 new_line();
                 
             } else if (i == button_wrappers.length - 4) {
               
-                if (left_margin + current_width >= document.documentElement.clientWidth - 320) {
+                if (left_margin + current_width >= document.documentElement.clientWidth - 320 + correlation) {
                   
                     new_line();
                 }
@@ -145,6 +198,8 @@ function size_top_menu() {
     }
     
     display_toggle('block');
+    
+    set_correlation();
     
     size_static();
     
@@ -185,6 +240,7 @@ function pressed(e) {
                 buttons[i].removeAttribute('id');
         }
         this.id = 'current_page';
+        current_tab = this.parentElement.id.substring(3);
     }
 }
 
@@ -269,10 +325,12 @@ function current_line_goto_new_tab() {
 
 function create_new_tab() {
   
+    current_tab = new_tab_id();
+  
     var new_tab = document.createElement('div');
     new_tab.className = 'button_wrapper';
-    new_tab.id = 'tmb' + new_tab_id();
-    new_tab.innerHTML = '<div class="outshadow button_container" id="current_page"><div class="inshadow button"><div class="text_container">Task ' + new_tab.id.substring(3) + '</div></div></div>';
+    new_tab.id = 'tmb' + current_tab;
+    new_tab.innerHTML = '<div class="outshadow button_container" id="current_page"><div class="inshadow button"><div class="text_container">Task ' + current_tab + '</div></div></div>';
     
     top_menu.insertBefore(new_tab, tmbadd);
     

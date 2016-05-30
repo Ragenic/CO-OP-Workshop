@@ -1,15 +1,22 @@
+<?
+    require_once "USER_index_preload.php";
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="core/style.css" type="text/css">
+        <link rel="stylesheet" href="core/main.css" type="text/css">
+        <link rel="stylesheet" href="core/header.css" type="text/css">
+        <link rel="stylesheet" href="USER_style.css" type="text/css">
         <script src="core/tools.js" type="text/javascript"></script>
         <script src="core/header.js" type="text/javascript"></script>
+        <script src="core/sidebar.js" type="text/javascript"></script>
         <script src="core/main.js" type="text/javascript"></script>
         <title>Homework</title>
     </head>
     <body>
-        <form id="form" action="?">
+        <div id="wrapper">
             <div id="top_menu">
                 
                <div class="horizontal_line" id="top_line"><div class="horizontal_line"></div></div>
@@ -73,6 +80,12 @@
                 <div class="horizontal_line" id="bottom_line"><div class="horizontal_line"></div></div>
                 
             </div>
-        </form>
+            
+            <div id="side_bar">
+                
+                <div class="button"></div>
+                
+            </div>
+        </div>
     </body>
 </html>
