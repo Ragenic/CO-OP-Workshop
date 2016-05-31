@@ -84,6 +84,8 @@
             <div id="side_bar">
                 
                 <div class="button"></div>
+                <div class="button button2"></div>
+                <div class="button button3"></div>
                 
             </div>
         </div>

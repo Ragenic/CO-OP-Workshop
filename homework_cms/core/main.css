@@ -14,3 +14,11 @@ body {
     height: 50px;
     background-color: white;
 }
+
+#side_bar .button2 {
+    top: 130px;
+}
+
+#side_bar .button3 {
+    top: 220px;
+}
