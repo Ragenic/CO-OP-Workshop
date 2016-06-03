@@ -3,6 +3,122 @@ var edit_mode = false;
 
 
 
+function expand() {
+    
+    function roller(current_button, current_margin, counter) {
+      
+        function starter() {
+            
+            roller(current_button, current_margin, counter);
+        }
+        
+        
+        if (counter >= current_margin) {
+            
+            if (current_button == document.getElementById('side_bar').getElementsByClassName('edit_mode')[0]) {
+                return edit_mode_initialization();
+            } else {
+                return;
+            }
+        }
+        
+        switch (true) {
+            case (counter < current_margin - 50):
+                counter = counter + 10;
+                break;
+            case (counter >= current_margin - 50):
+                counter = counter + 1;
+                break;
+        }
+        
+        current_button.style.top = counter + 'px';
+        
+        roller_timer = setTimeout(starter, 4);
+    }
+    
+    var buttons = document.getElementById('side_bar').getElementsByClassName('edit_mode');
+    
+    for (var i = 0; i < buttons.length - 1; i++) {
+      
+        var top_margin = buttons[i].style.top.substring(0, buttons[i].style.top.length - 2);
+        
+        roller(buttons[i], top_margin, 38);
+    }
+}
+
+
+
+function roll_up() {
+  
+    function roller(current_button, current_margin) {
+      
+        function starter() {
+            
+            roller(current_button, current_margin);
+        }
+        
+        
+        if (current_margin <= 38) {
+            
+            if (current_button == document.getElementById('side_bar').getElementsByClassName('edit_mode')[0]) {
+                return view_mode_initialization();
+            } else {
+                return;
+            }
+        }
+        
+        switch (true) {
+            case (current_margin > 50):
+                current_margin = current_margin - 10;
+                break;
+            case (current_margin <= 50):
+                current_margin = current_margin - 1;
+                break;
+        }
+        
+        current_button.style.top = current_margin + 'px';
+        
+        roller_timer = setTimeout(starter, 4);
+    }
+    
+    
+    var buttons = document.getElementById('side_bar').getElementsByClassName('edit_mode');
+    
+    for (var i = 0; i < buttons.length - 1; i++) {
+      
+        var top_margin = buttons[i].style.top.substring(0, buttons[i].style.top.length - 2);
+        
+        roller(buttons[i], top_margin);
+    }
+}
+
+
+
+function scroll_top() {
+  
+    function slow_scroll() {
+      
+        if (current_y_scroll <= 0) {
+            
+            return roll_up();
+        }
+        
+        current_y_scroll = current_y_scroll - 10;
+        
+        window.scrollTo(current_x_scroll, current_y_scroll);
+        
+        var scroll_timer = setTimeout(slow_scroll, 7);
+    }
+    
+    
+    var current_y_scroll = window.pageYOffset;
+    var current_x_scroll = window.pageXOffset;
+    
+    slow_scroll();
+}
+
+
+
 function size_side_bar() {
     
     function size_static() {
@@ -84,14 +200,34 @@ function display_side_bar() {
 
 
 
+function edit_mode_initialization() {
+    
+    
+}
+
+
+
 function enable_edit_mode(e) {
     
     if (e.which == 1) {
-        
+      
         edit_mode = true;
         
         display_side_bar();
+        
+        expand();
+        
+        edit_mode_initialization();
     }
+}
+
+
+
+function view_mode_initialization() {
+    
+    edit_mode = false;
+    
+    display_side_bar();
 }
 
 
@@ -100,9 +236,9 @@ function enable_view_mode(e) {
     
     if (e.which == 1) {
         
-        edit_mode = false;
+        scroll_top();
         
-        display_side_bar();
+        //scroll_top -> roll_up -> view_mode_initialization
     }
 }
 
