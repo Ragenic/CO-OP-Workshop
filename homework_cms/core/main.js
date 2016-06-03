@@ -10,6 +10,15 @@ function top_menu_setting() {
 
 
 
+function side_bar_setting() {
+    
+    display_side_bar();
+    
+    add_side_bar_press_listeners();
+}
+
+
+
 function resize_handler() {
     
     size_top_menu();
@@ -22,6 +31,8 @@ function resize_handler() {
 function load_handler() {
   
     top_menu_setting();
+    
+    side_bar_setting();
   
     resize_handler();
     

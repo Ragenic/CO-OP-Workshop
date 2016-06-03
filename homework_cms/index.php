@@ -83,9 +83,69 @@
             
             <div id="side_bar">
                 
-                <div class="button"></div>
-                <div class="button button2"></div>
-                <div class="button button3"></div>
+                <div class="button_wrapper view_mode" id="edit">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Edit Mode</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="info">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Info</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="sett">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Settings</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="addcont">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Add Box</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="addinput">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Add Input</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="rentab">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Rename Tab</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="deltab">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">Delete Tab</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button_wrapper edit_mode" id="view">
+                    <div class="outshadow button_container">
+                        <div class="inshadow button">
+                            <div class="text_container">View Mode</div>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
         </div>

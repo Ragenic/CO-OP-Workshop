@@ -278,7 +278,7 @@ function rename(e) {
 
 function add_top_menu_rename_listeners() {
         
-    var top_menu_buttons = document.getElementsByClassName('button_container');
+    var top_menu_buttons = document.getElementById('top_menu').getElementsByClassName('button_container');
     for (var i = 0; i < top_menu_buttons.length - 3; i++) {
         top_menu_buttons[i].addEventListener('dblclick', rename);
     }
@@ -288,7 +288,7 @@ function add_top_menu_rename_listeners() {
 
 function add_top_menu_press_listeners() {
         
-    var top_menu_buttons = document.getElementsByClassName('button_container');
+    var top_menu_buttons = document.getElementById('top_menu').getElementsByClassName('button_container');
     for (var i = 0; i < top_menu_buttons.length - 2; i++) {
         top_menu_buttons[i].addEventListener('mousedown', pressed);
     }

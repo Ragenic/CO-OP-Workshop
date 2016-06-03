@@ -6,19 +6,45 @@ body {
     background-color: black;
 }
 
-#side_bar .button {
-    
+#side_bar {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1C1C1C;
+}
+
+#side_bar .text_container {
+    margin-top: 11px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: pre;
+    display: inline-block;
+}
+
+#side_bar .button_wrapper {
     position: absolute;
-    top: 40px;
     width: 140px;
-    height: 50px;
-    background-color: white;
 }
 
-#side_bar .button2 {
-    top: 130px;
+#side_bar .button_container {
+    width: 140px;
+    height: 40px;
+    background: radial-gradient(rgb(140,140,140),rgb(245,240,240));
+    border-radius: 5px;
 }
 
-#side_bar .button3 {
-    top: 220px;
+#side_bar .button {
+    background: #EEE9E9;
+    background: linear-gradient(to top right, rgba(139,137,137,0.8), rgba(255,250,250,0.8) 70%);
+    height: 40px;
+    width: 140px;
+    opacity: 0.99;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
+#side_bar .button_container:hover .button {
+    background: linear-gradient(to top left, rgba(255,250,250,0.9) 70%, rgba(139,137,137,0.9));
+}
+
