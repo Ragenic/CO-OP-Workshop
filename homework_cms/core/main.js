@@ -19,7 +19,18 @@ function side_bar_setting() {
 
 
 
+function scroll_handler() {
+  
+    if (edit_mode == true) {
+      scroll_side_bar();
+    }
+}
+
+
+
 function resize_handler() {
+  
+    min_screen_width_determination();
     
     size_top_menu();
     
@@ -42,3 +53,4 @@ function load_handler() {
 
 window.addEventListener('load', load_handler);
 window.addEventListener('resize', resize_handler);
+window.addEventListener('scroll', scroll_handler);

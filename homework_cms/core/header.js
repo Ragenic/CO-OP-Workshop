@@ -1,8 +1,4 @@
 
-var current_line = 1;
-var current_tab = 1;
-
-
 
 function set_current_tab_on_default() {
     
@@ -110,31 +106,6 @@ function show_current_line() {
 
 function size_top_menu() {
     
-    var correlation = 0;
-    
-    
-    function set_correlation() {
-        
-        var max_element_width = 0;
-        
-        var buttons = document.getElementById('top_menu').getElementsByClassName('button');
-        
-        for (var i = 0; i < buttons.length - 2; i++) {
-          
-            if (buttons[i].offsetWidth > max_element_width) {
-                max_element_width = buttons[i].offsetWidth;
-            }
-        }
-        
-        var min_screen_width = max_element_width + 370;
-        
-        if (min_screen_width > document.documentElement.clientWidth) {
-            
-            correlation = min_screen_width - document.documentElement.clientWidth;
-        }
-    }
-    
-    
     function size_static() {
         
         var top_menu_lines = document.getElementById('top_menu').getElementsByClassName('horizontal_line');
@@ -198,8 +169,6 @@ function size_top_menu() {
     }
     
     display_toggle('block');
-    
-    set_correlation();
     
     size_static();
     

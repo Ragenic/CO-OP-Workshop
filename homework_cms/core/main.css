@@ -6,6 +6,13 @@ body {
     background-color: black;
 }
 
+#wrapper {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 10000px;
+}
+
 #side_bar {
     font-size: 20px;
     font-weight: bold;
@@ -49,6 +56,14 @@ body {
 }
 
 #side_bar .edit_mode {
-    position: fixed;
+    position: absolute;
+}
+
+#content {
+    border: 2px dashed green;
+    border-radius: 10px;
+    position: relative;
+    top: 100px;
+    
 }
 
