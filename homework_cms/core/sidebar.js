@@ -101,12 +101,18 @@ function scroll_top() {
         }
         
         switch (true) {
-            case (current_y_scroll > 1000):
+            case (current_y_scroll > 2000):
                 current_y_scroll = current_y_scroll - 1000;
                 break;
-            case (current_y_scroll <= 1000):
+            case (current_y_scroll > 1000):
+                current_y_scroll = current_y_scroll - 500;
+                break;
+            case (current_y_scroll > 200):
+                current_y_scroll = current_y_scroll - 50;
+                break;
+            case (current_y_scroll <= 200):
                 current_y_scroll = current_y_scroll - 10;
-                break;;
+                break;
         }
         
         window.scrollTo(current_x_scroll, current_y_scroll);
@@ -236,6 +242,8 @@ function enable_edit_mode(e) {
 
 
 function view_mode_initialization() {
+  
+    fast_scroll = false;
     
     edit_mode = false;
     
@@ -247,6 +255,8 @@ function view_mode_initialization() {
 function enable_view_mode(e) {
     
     if (e.which == 1) {
+      
+        fast_scroll = true;
         
         scroll_top();
         
@@ -277,7 +287,14 @@ function scrolling(buttons, final_top_space, current_top_spaces, direction) {
         
             space_step = (space_step < 20) ? 20 : space_step;
             
-            var final_top_space = 38 + window.pageYOffset;
+            if ((document.documentElement.clientHeight < 490) && (window.pageYOffset > 0)) {
+                
+                var final_top_space = 20 + window.pageYOffset;
+                
+            } else {
+                
+                var final_top_space = 38 + window.pageYOffset;
+            }
             
             for (var i = buttons.length - 1; i >= 0; i--) {
                 
@@ -287,30 +304,55 @@ function scrolling(buttons, final_top_space, current_top_spaces, direction) {
             var direction = (final_top_space > current_top_spaces[buttons.length - 1]) ? 1 : -1;
             
             scroll_session = 1;
+            
+            scroll_slowing = (scroll_slowing > 15) ? 15 : scroll_slowing + 2;
         }
+        
         
         if (final_top_space == current_top_spaces[buttons.length - 1]) {
             
             scroll_session = 0;
             
+            scroll_slowing = 0;
+            
             return;
         }
         
-        var distance = Math.abs(final_top_space - current_top_spaces[buttons.length - 1]);
+        if ((direction === 1) && (window.pageYOffset + document.documentElement.clientHeight < current_top_spaces[0] + 70)) {
+            
+            scroll_session = 0;
+            
+            scroll_slowing = 0;
+            
+            return;
+        }
+        
+        if ((direction === 1) && (document.documentElement.clientHeight < 490)) {
+            
+            var distance = window.pageYOffset + document.documentElement.clientHeight - current_top_spaces[0] - 70;
+            //RU: Чистой воды костыль, так и не понял почему '-70' в конце.
+            
+        } else {
+            
+            var distance = Math.abs(final_top_space - current_top_spaces[buttons.length - 1]);
+        }
         
         switch (true) {
           
-            case (distance > document.documentElement.clientHeight * 2):
-                distance = 1000 * direction;
+            case (distance > document.documentElement.clientHeight * 5):
+                distance = document.documentElement.clientHeight * 2 * direction;
+                break;
+            case (distance > document.documentElement.clientHeight * 3):
+                distance = document.documentElement.clientHeight * direction;
                 break;
             case (distance > 100):
-                distance = 15 * direction;
-                break;
-            case (distance > 50):
                 distance = 10 * direction;
                 break;
-            case (distance > 10):
+            case (distance > 50):
                 distance = 5 * direction;
+                break;
+            case (distance > 10):
+                distance = 2 * direction;
                 break;
             case (distance <= 10):
                 distance = 1 * direction;
@@ -325,8 +367,17 @@ function scrolling(buttons, final_top_space, current_top_spaces, direction) {
         }
     }
     
-    var scroll_timer = setTimeout(function() { scrolling(buttons, final_top_space, current_top_spaces, direction) }, 4);
-    //scrolling(buttons, final_top_space, current_top_spaces, direction);
+    var delay = 7 + scroll_slowing;
+    
+    if (fast_scroll == false) {
+        var scroll_timer = setTimeout(function() { scrolling(buttons, final_top_space, current_top_spaces, direction) }, delay);
+    }
+    
+    if (fast_scroll == true) {
+        scrolling(buttons, final_top_space, current_top_spaces, direction);
+    }
+    
+    scroll_slowing = scroll_slowing - 1;
 }
 
 

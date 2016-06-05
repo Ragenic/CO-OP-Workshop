@@ -13,3 +13,7 @@ var scroll_session = 0;
 //0 - session inactive, 1 - session active | no difference, 2 - session active | difference present
 
 var scroll_block = false;
+
+var fast_scroll = false;
+
+var scroll_slowing = 0;
