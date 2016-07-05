@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON request example</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="ajax_request.js"></script>
+        <style>
+            input {display: inline block; margin-left: 20px;}
+        </style>
+    </head>
+    <body>
+    
+        <p></p>
+        <p></p>
+        
+        <input id="message" type="text">
+        <input id="accept" type="submit">
+        
+        <script type="text/javascript">
+            
+            function send_request() {
+                
+                ajax_request('ajax_echo.php', message.value, function(response) {
+                    alert(response);
+                });
+            }
+            
+            accept.addEventListener('click', send_request);
+            
+        </script>
+    </body>
+</html>
